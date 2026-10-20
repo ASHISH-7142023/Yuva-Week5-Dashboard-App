@@ -1,0 +1,14 @@
+Final Project Integration: Mini Web Application — OmniTrack Cloud Operations Dashboard
+Yuva Intern: Junior Frontend Developer Internship (Week 5 Capstone Deliverable)
+Student Intern: Ashish Ranjan Singh
+Target Repository: https://github.com/ASHISH-7142023/Yuva-Week5-Dashboard-App
+
+Project Overview & Capstone Engineering Objectives:
+For the Week 5 Capstone Project, I developed "OmniTrack," a full-featured, enterprise-grade Cloud Operations & Analytics Dashboard built using pure vanilla web standards (Semantic HTML5, Modern CSS3, and Vanilla ES6+ JavaScript). The application unifies all core proficiencies cultivated throughout the internship—mobile-first responsive grid architecture (Week 1), modular accessible interactive components (Week 2), strict WCAG 2.1 Level AA accessibility and screen reader support (Week 3), and zero-dependency, high-velocity frontend performance (Week 4)—into a cohesive production-grade monitoring application.
+
+Key Architectural Features Implemented:
+1. Asynchronous Data Pipeline & MVC State Store: Engineered a centralized client-side Model-View-Controller (MVC) store that asynchronously ingests telemetry for 24 multi-region cloud microservices from a structured data.json repository. Features live KPI cards monitoring monthly cloud spend in Indian Rupees (₹1,42,85,000), 128 active cluster nodes, incident logs, and 99.4% global efficiency.
+2. Custom Zero-Dependency SVG Chart Engine: Developed a mathematical vector charting system rendering 24-hour time-series trends without external charting dependencies. The engine dynamically calculates smooth cubic bezier curves, gradient-filled area polygons, interactive data node markers, and floating coordinate tooltips across three selectable telemetry channels (Requests/sec, Latency ms, and CPU Load %).
+3. Reactive Multi-Column Sortable Data Grid: Built an interactive services table featuring instant debounced search across all metadata fields, multi-dropdown filters (Category, Cloud Region, Health Status), clickable sortable column headers with visual directional indicators (↑/↓) and aria-sort synchronization, and configurable client-side pagination (8, 12, or 24 items per page).
+4. Accessible Modal Record Inspector (WCAG AA): Clicking any service record triggers an accessible modal dialog with a strict keyboard focus trap (Tab/Shift+Tab), Escape key dismissal, and programmatic focus restoration. Evaluators can inspect deep architectural specifications, uptime SLA, daily run-rate in INR, and trigger simulated node reboot actions with dynamic toast feedback.
+5. Adaptive Ergonomics & Mobile Shell: Features persistent dark/light theme switching, a responsive collapsible off-canvas navigation drawer for mobile devices, and an aria-live="polite" screen reader announcer.

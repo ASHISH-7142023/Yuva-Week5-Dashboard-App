@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OmniTrack — Enterprise Cloud Operations & Analytics Dashboard. High-velocity telemetry, multi-column sortable infrastructure grid, zero-dependency SVG visualization, and WCAG AA accessibility.">
+  <meta name="theme-color" content="#0b0f19">
+  <title>OmniTrack — Cloud Operations &amp; Analytics Dashboard</title>
+
+  <!-- Google Fonts: Inter & Outfit with font-display: swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Dashboard Stylesheet -->
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body data-theme="dark">
+
+  <!-- =====================================================================
+       ACCESSIBLE SKIP LINKS (WCAG 2.1 AA)
+       ===================================================================== -->
+  <nav class="skip-links" aria-label="Skip navigation links">
+    <a href="#main-dashboard" class="skip-link">Skip to Main Dashboard</a>
+    <a href="#chart-section" class="skip-link">Skip to Telemetry Analytics Chart</a>
+    <a href="#table-section" class="skip-link">Skip to Services Data Grid</a>
+  </nav>
+
+  <!-- =====================================================================
+       DASHBOARD WRAPPER & SHELL
+       ===================================================================== -->
+  <div class="dashboard-shell">
+
+    <!-- 1. LEFT SIDEBAR NAVIGATION -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Main Navigation">
+      <div class="sidebar-header">
+        <a href="#main-dashboard" class="brand-link" aria-label="OmniTrack Home">
+          <div class="brand-badge" aria-hidden="true">⚡</div>
+          <div class="brand-titles">
+            <span class="brand-name">Omni<span class="text-cyan">Track</span></span>
+            <span class="brand-sub">Cloud Ops Suite</span>
+          </div>
+        </a>
+        <button type="button" class="btn-sidebar-close" id="btn-sidebar-close" aria-label="Close navigation drawer">&times;</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group-title">OPERATIONS</div>
+        <ul class="nav-list">
+          <li>
+            <a href="#main-dashboard" class="nav-item is-active" aria-current="page">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span>Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="#chart-section" class="nav-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <span>Telemetry Trends</span>
+            </a>
+          </li>
+          <li>
+            <a href="#table-section" class="nav-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              <span>Services Grid</span>
+              <span class="nav-counter-badge" id="nav-active-count">24</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/ASHISH-7142023/Yuva-Week5-Dashboard-App" target="_blank" rel="noopener noreferrer" class="nav-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub Repo</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-group-title">ORGANIZATION</div>
+        <div class="sidebar-org-card">
+          <div class="org-avatar">AP</div>
+          <div class="org-info">
+            <span class="org-name">Ashish Ranjan Singh</span>
+            <span class="org-role">Yuva Intern &bull; Week 5</span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-pill">
+          <span class="status-pulse-dot" aria-hidden="true"></span>
+          <span>Cluster: 99.98% Uptime</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- SIDEBAR BACKDROP FOR MOBILE -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- 2. MAIN CONTENT AREA -->
+    <div class="dashboard-body">
+
+      <!-- TOP APP HEADER -->
+      <header class="app-header">
+        <div class="header-left">
+          <button type="button" class="btn-hamburger" id="btn-hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dashboard-sidebar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          
+          <div class="header-search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="search" id="global-search" class="search-input" placeholder="Quick search cluster services, regions, IDs..." aria-label="Quick search cluster services">
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Live Telemetry Status -->
+          <div class="status-badge-chip">
+            <span class="chip-dot" aria-hidden="true"></span>
+            <span id="header-cluster-id">cluster-global-prod-01</span>
+          </div>
+
+          <!-- Dark / Light Theme Toggle -->
+          <button type="button" class="btn-icon-action" id="btn-theme-toggle" aria-label="Toggle dark and light color theme" title="Toggle theme">
+            <svg id="icon-theme-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+
+          <!-- Notification Trigger with Badge -->
+          <button type="button" class="btn-icon-action" id="btn-notifications" aria-label="System notifications (1 critical alert)" title="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="notification-indicator" aria-hidden="true"></span>
+          </button>
+
+          <!-- Refresh Data Trigger -->
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-data" aria-label="Refresh telemetry data">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Sync</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- PRIMARY DASHBOARD VIEW -->
+      <main class="dashboard-content" id="main-dashboard">
+
+        <!-- DASHBOARD HERO BANNER -->
+        <div class="welcome-banner">
+          <div>
+            <div class="banner-kicker">
+              <span class="kicker-pill">Capstone Integration</span>
+              <span>Yuva Intern: Junior Frontend Developer &bull; Week 5</span>
+            </div>
+            <h1 class="banner-title">Cloud Infrastructure &amp; Microservices Operations</h1>
+            <p class="banner-sub">
+              Live telemetry monitoring across 24 multi-region services. Pure Vanilla MVC architecture with zero framework overhead.
+            </p>
+          </div>
+          <div class="banner-actions">
+            <a href="#table-section" class="btn btn-primary">
+              <span>Inspect Services Grid</span>
+              <span aria-hidden="true">&darr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             1. EXECUTIVE KPI SUMMARY METRIC CARDS
+             =================================================================== -->
+        <section class="kpi-grid" aria-labelledby="kpi-section-title">
+          <h2 class="sr-only" id="kpi-section-title">Executive Key Performance Indicators</h2>
+
+          <!-- KPI Card 1: Total Revenue / Spend -->
+          <div class="kpi-card">
+            <div class="kpi-card-header">
+              <span class="kpi-label">Monthly Cloud Spend</span>
+              <div class="kpi-icon-box bg-indigo-subtle" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+            </div>
+            <div class="kpi-value text-main" id="kpi-revenue">₹1,42,85,000</div>
+            <div class="kpi-trend text-emerald">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <span id="kpi-revenue-trend">+14.2% from last month</span>
+            </div>
+          </div>
+
+          <!-- KPI Card 2: Active Nodes -->
+          <div class="kpi-card">
+            <div class="kpi-card-header">
+              <span class="kpi-label">Active Cluster Nodes</span>
+              <div class="kpi-icon-box bg-cyan-subtle" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              </div>
+            </div>
+            <div class="kpi-value text-cyan" id="kpi-nodes">128 Nodes</div>
+            <div class="kpi-trend text-emerald">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span id="kpi-nodes-trend">100% operational capacity</span>
+            </div>
+          </div>
+
+          <!-- KPI Card 3: Critical Incidents -->
+          <div class="kpi-card">
+            <div class="kpi-card-header">
+              <span class="kpi-label">Active Incidents</span>
+              <div class="kpi-icon-box bg-red-subtle" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              </div>
+            </div>
+            <div class="kpi-value text-amber" id="kpi-incidents">1 Critical</div>
+            <div class="kpi-trend text-muted">
+              <span id="kpi-incidents-trend">-3 incidents vs last week</span>
+            </div>
+          </div>
+
+          <!-- KPI Card 4: Global Efficiency -->
+          <div class="kpi-card">
+            <div class="kpi-card-header">
+              <span class="kpi-label">System Efficiency Index</span>
+              <div class="kpi-icon-box bg-emerald-subtle" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+            </div>
+            <div class="kpi-value text-emerald" id="kpi-efficiency">99.4%</div>
+            <div class="kpi-trend text-emerald">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <span id="kpi-efficiency-trend">+0.6% efficiency index</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             2. CUSTOM ZERO-DEPENDENCY SVG CHART ENGINE
+             =================================================================== -->
+        <section class="chart-section" id="chart-section" aria-labelledby="chart-title">
+          <div class="card chart-card">
+            <div class="chart-header">
+              <div>
+                <span class="badge-tag">Dynamic Telemetry</span>
+                <h2 class="card-title" id="chart-title">Real-Time Cluster Workload Profile</h2>
+                <p class="card-subtitle">
+                  24-hour time series computed and rendered with zero external charting libraries via responsive SVG.
+                </p>
+              </div>
+
+              <!-- Metric Channel Selector Buttons -->
+              <div class="chart-controls" role="group" aria-label="Select metric channel for chart">
+                <button type="button" class="btn-chart-tab is-active" data-metric="requests" aria-pressed="true">
+                  Requests / sec
+                </button>
+                <button type="button" class="btn-chart-tab" data-metric="latency" aria-pressed="false">
+                  Latency (ms)
+                </button>
+                <button type="button" class="btn-chart-tab" data-metric="cpu" aria-pressed="false">
+                  CPU Load (%)
+                </button>
+              </div>
+            </div>
+
+            <!-- SVG Chart Canvas Container -->
+            <div class="svg-chart-wrapper" id="chart-container" role="region" aria-label="Interactive cluster workload time series chart">
+              <svg id="telemetry-svg" class="telemetry-svg" viewBox="0 0 1000 320" preserveAspectRatio="none" role="img" aria-label="Line chart showing hourly cluster workload trends">
+                <defs>
+                  <!-- Gradient for Requests -->
+                  <linearGradient id="chartGradientRequests" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#6366f1" stop-opacity="0.45"/>
+                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0.0"/>
+                  </linearGradient>
+                  <!-- Gradient for Latency -->
+                  <linearGradient id="chartGradientLatency" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.45"/>
+                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.0"/>
+                  </linearGradient>
+                  <!-- Gradient for CPU -->
+                  <linearGradient id="chartGradientCpu" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.45"/>
+                    <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Grid Horizontal Lines -->
+                <g class="chart-grid-lines">
+                  <line x1="60" y1="40" x2="960" y2="40" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+                  <line x1="60" y1="105" x2="960" y2="105" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+                  <line x1="60" y1="170" x2="960" y2="170" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+                  <line x1="60" y1="235" x2="960" y2="235" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+                  <line x1="60" y1="270" x2="960" y2="270" stroke="rgba(255,255,255,0.15)"/>
+                </g>
+
+                <!-- Dynamic Shaded Area Path -->
+                <path id="svg-chart-area" class="svg-area-fill" d="" fill="url(#chartGradientRequests)"></path>
+
+                <!-- Dynamic Smooth Polyline Stroke -->
+                <path id="svg-chart-line" class="svg-line-stroke" d="" fill="none" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+
+                <!-- Interactive Data Nodes Group -->
+                <g id="svg-chart-points" class="chart-points-group"></g>
+
+                <!-- Time Axis Labels -->
+                <g id="svg-x-axis" class="chart-axis-labels"></g>
+              </svg>
+
+              <!-- Chart Tooltip Card -->
+              <div class="chart-tooltip" id="chart-tooltip" role="tooltip" aria-hidden="true"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             3. INTERACTIVE SERVICES DATA GRID & MULTI-FILTER TOOLBAR
+             =================================================================== -->
+        <section class="table-section" id="table-section" aria-labelledby="table-title">
+          <div class="card table-card">
+            
+            <div class="table-card-header">
+              <div>
+                <span class="badge-tag">Service Registry</span>
+                <h2 class="card-title" id="table-title">Cloud Microservices &amp; Infrastructure Health</h2>
+                <p class="card-subtitle">
+                  Click any column header to sort. Use keyword search or categorical filters to inspect cluster status.
+                </p>
+              </div>
+
+              <div class="table-actions-top">
+                <span class="results-counter" id="results-count" aria-live="polite">Showing 24 of 24 services</span>
+              </div>
+            </div>
+
+            <!-- FILTER TOOLBAR -->
+            <div class="filter-toolbar" role="search" aria-label="Filter and search services table">
+              
+              <!-- Search Input -->
+              <div class="filter-item filter-search">
+                <label for="table-search-input" class="filter-label">Search Services</label>
+                <div class="input-icon-wrapper">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <input type="search" id="table-search-input" class="form-control" placeholder="Search by name, ID, or tech...">
+                </div>
+              </div>
+
+              <!-- Category Filter -->
+              <div class="filter-item">
+                <label for="filter-category" class="filter-label">Category</label>
+                <select id="filter-category" class="form-control form-select">
+                  <option value="all">All Categories</option>
+                  <option value="Infrastructure">Infrastructure</option>
+                  <option value="Database">Database</option>
+                  <option value="Streaming">Streaming</option>
+                  <option value="Security">Security</option>
+                  <option value="Compute">Compute</option>
+                  <option value="Analytics">Analytics</option>
+                </select>
+              </div>
+
+              <!-- Region Filter -->
+              <div class="filter-item">
+                <label for="filter-region" class="filter-label">Cloud Region</label>
+                <select id="filter-region" class="form-control form-select">
+                  <option value="all">All Regions</option>
+                  <option value="AP-South (Mumbai)">AP-South (Mumbai)</option>
+                  <option value="US-East (N. Virginia)">US-East (N. Virginia)</option>
+                  <option value="US-West (Oregon)">US-West (Oregon)</option>
+                  <option value="EU-Central (Frankfurt)">EU-Central (Frankfurt)</option>
+                  <option value="AP-East (Tokyo)">AP-East (Tokyo)</option>
+                </select>
+              </div>
+
+              <!-- Status Filter -->
+              <div class="filter-item">
+                <label for="filter-status" class="filter-label">Status</label>
+                <select id="filter-status" class="form-control form-select">
+                  <option value="all">All Statuses</option>
+                  <option value="healthy">Healthy Only</option>
+                  <option value="warning">Warning Only</option>
+                  <option value="critical">Critical Only</option>
+                </select>
+              </div>
+
+              <!-- Reset Filters -->
+              <div class="filter-item filter-reset-item">
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-reset-filters" aria-label="Reset all search and dropdown filters">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- SORTABLE RESPONSIVE TABLE WRAPPER -->
+            <div class="table-scroll-container" tabindex="0" role="region" aria-label="Sortable services telemetry table">
+              <table class="data-table" id="services-table">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <button type="button" class="th-sort-btn" data-sort="name" aria-sort="none">
+                        <span>Service Name</span>
+                        <span class="sort-icon" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col">
+                      <button type="button" class="th-sort-btn" data-sort="category" aria-sort="none">
+                        <span>Category</span>
+                        <span class="sort-icon" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col">
+                      <button type="button" class="th-sort-btn" data-sort="region" aria-sort="none">
+                        <span>Region</span>
+                        <span class="sort-icon" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col">
+                      <button type="button" class="th-sort-btn" data-sort="status" aria-sort="none">
+                        <span>Status</span>
+                        <span class="sort-icon" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col">
+                      <button type="button" class="th-sort-btn" data-sort="latencyMs" aria-sort="none">
+                        <span>Latency</span>
+                        <span class="sort-icon" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col">
+                      <button type="button" class="th-sort-btn" data-sort="cpuUtilization" aria-sort="none">
+                        <span>CPU Load</span>
+                        <span class="sort-icon" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col">
+                      <button type="button" class="th-sort-btn" data-sort="requestsPerSec" aria-sort="none">
+                        <span>Throughput</span>
+                        <span class="sort-icon" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col" class="th-action-col">
+                      <span>Action</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="services-tbody">
+                  <!-- Dynamically populated via app.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- PAGINATION CONTROLS -->
+            <div class="table-pagination-row">
+              <div class="page-size-picker">
+                <label for="page-size-select" class="page-size-label">Rows per page:</label>
+                <select id="page-size-select" class="form-control form-select form-select-sm">
+                  <option value="8" selected>8</option>
+                  <option value="12">12</option>
+                  <option value="24">24 (All)</option>
+                </select>
+              </div>
+
+              <div class="pagination-nav-group" role="navigation" aria-label="Table pagination navigation">
+                <button type="button" class="btn-page-nav" id="btn-page-prev" aria-label="Previous table page" disabled>&larr; Prev</button>
+                <div class="pagination-page-numbers" id="pagination-pages" role="group" aria-label="Page selection">
+                  <!-- Injected via JavaScript -->
+                </div>
+                <button type="button" class="btn-page-nav" id="btn-page-next" aria-label="Next table page">Next &rarr;</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+      <!-- APP FOOTER -->
+      <footer class="app-footer">
+        <div class="footer-inner">
+          <div class="footer-info">
+            <span class="footer-title">OmniTrack Cloud Operations Dashboard</span>
+            <p class="footer-desc">
+              Final Capstone Deliverable: <strong>Ashish Ranjan Singh</strong> &bull; Yuva Intern: Junior Frontend Developer Internship
+            </p>
+          </div>
+          <div class="footer-links">
+            <a href="https://github.com/ASHISH-7142023/Yuva-Week5-Dashboard-App" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repository (Week 5)</a>
+            <a href="#main-dashboard" class="footer-link">Back to Top &uarr;</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       4. ACCESSIBLE MODAL INSPECTION DIALOG (WCAG AA FOCUS TRAP)
+       ===================================================================== -->
+  <div class="modal-backdrop" id="service-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-service-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-header-titles">
+          <div class="modal-status-badge" id="modal-service-status-badge">Healthy</div>
+          <h3 class="modal-title" id="modal-service-title">Service Details</h3>
+        </div>
+        <button type="button" class="btn-modal-close" id="btn-modal-close" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modal-service-body">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-modal-action-restart">Reboot Service Node</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btn-modal-dismiss">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING SCREEN READER LIVE ANNOUNCER -->
+  <div id="a11y-announcer" class="sr-only" role="status" aria-live="polite"></div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-container" role="region" aria-label="System notifications"></div>
+
+  <!-- Application Controller -->
+  <script src="app.js"></script>
+</body>
+</html>
