@@ -31,111 +31,134 @@
        ===================================================================== -->
   <div class="dashboard-shell">
 
-    <!-- 1. LEFT SIDEBAR NAVIGATION -->
-    <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Main Navigation">
-      <div class="sidebar-header">
-        <a href="#main-dashboard" class="brand-link" aria-label="OmniTrack Home">
-          <div class="brand-badge" aria-hidden="true">⚡</div>
+    <!-- =====================================================================
+         UPPER BAR / TOP APP HEADER (MATCHING DESIGN REFERENCE)
+         ===================================================================== -->
+    <header class="app-header">
+      <div class="header-left">
+        <!-- Brand Logo Block in Upper Bar -->
+        <a href="#main-dashboard" class="brand-link header-brand-link" aria-label="OmniTrack Home">
+          <div class="brand-badge header-brand-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="url(#bolt-grad-header)" stroke="#ff7849" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="bolt-grad-header" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff9966"/>
+                  <stop offset="1" stop-color="#ff5e62"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
           <div class="brand-titles">
             <span class="brand-name">Omni<span class="text-cyan">Track</span></span>
             <span class="brand-sub">Cloud Ops Suite</span>
           </div>
         </a>
-        <button type="button" class="btn-sidebar-close" id="btn-sidebar-close" aria-label="Close navigation drawer">&times;</button>
-      </div>
 
-      <nav class="sidebar-nav">
-        <div class="nav-group-title">OPERATIONS</div>
-        <ul class="nav-list">
-          <li>
-            <a href="#main-dashboard" class="nav-item is-active" aria-current="page">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-              <span>Overview</span>
-            </a>
-          </li>
-          <li>
-            <a href="#chart-section" class="nav-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-              <span>Telemetry Trends</span>
-            </a>
-          </li>
-          <li>
-            <a href="#table-section" class="nav-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-              <span>Services Grid</span>
-              <span class="nav-counter-badge" id="nav-active-count">24</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/ASHISH-7142023/Yuva-Week5-Dashboard-App" target="_blank" rel="noopener noreferrer" class="nav-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span>GitHub Repo</span>
-            </a>
-          </li>
-        </ul>
+        <!-- Vertical Divider Line -->
+        <div class="header-divider" aria-hidden="true"></div>
 
-        <div class="nav-group-title">ORGANIZATION</div>
-        <div class="sidebar-org-card">
-          <div class="org-avatar">AP</div>
-          <div class="org-info">
-            <span class="org-name">Ashish Ranjan Singh</span>
-            <span class="org-role">Yuva Intern &bull; Week 5</span>
-          </div>
-        </div>
-      </nav>
+        <!-- Mobile/Desktop Hamburger Toggle -->
+        <button type="button" class="btn-hamburger" id="btn-hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dashboard-sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
 
-      <div class="sidebar-footer">
-        <div class="system-status-pill">
-          <span class="status-pulse-dot" aria-hidden="true"></span>
-          <span>Cluster: 99.98% Uptime</span>
+        <!-- Quick Search Box -->
+        <div class="header-search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" id="global-search" class="search-input" placeholder="Quick search cluster services, regions, IDs..." aria-label="Quick search cluster services">
         </div>
       </div>
-    </aside>
 
-    <!-- SIDEBAR BACKDROP FOR MOBILE -->
-    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
-
-    <!-- 2. MAIN CONTENT AREA -->
-    <div class="dashboard-body">
-
-      <!-- TOP APP HEADER -->
-      <header class="app-header">
-        <div class="header-left">
-          <button type="button" class="btn-hamburger" id="btn-hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="dashboard-sidebar">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-          </button>
-          
-          <div class="header-search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="search" id="global-search" class="search-input" placeholder="Quick search cluster services, regions, IDs..." aria-label="Quick search cluster services">
-          </div>
+      <div class="header-right">
+        <!-- Live Telemetry Status -->
+        <div class="status-badge-chip">
+          <span class="chip-dot" aria-hidden="true"></span>
+          <span id="header-cluster-id">cluster-global-prod-01</span>
         </div>
 
-        <div class="header-right">
-          <!-- Live Telemetry Status -->
-          <div class="status-badge-chip">
-            <span class="chip-dot" aria-hidden="true"></span>
-            <span id="header-cluster-id">cluster-global-prod-01</span>
-          </div>
+        <!-- Dark / Light Theme Toggle -->
+        <button type="button" class="btn-icon-action" id="btn-theme-toggle" aria-label="Toggle dark and light color theme" title="Toggle theme">
+          <svg id="icon-theme-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
 
-          <!-- Dark / Light Theme Toggle -->
-          <button type="button" class="btn-icon-action" id="btn-theme-toggle" aria-label="Toggle dark and light color theme" title="Toggle theme">
-            <svg id="icon-theme-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          </button>
+        <!-- Notification Trigger with Badge -->
+        <button type="button" class="btn-icon-action" id="btn-notifications" aria-label="System notifications (1 critical alert)" title="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <span class="notification-indicator" aria-hidden="true"></span>
+        </button>
 
-          <!-- Notification Trigger with Badge -->
-          <button type="button" class="btn-icon-action" id="btn-notifications" aria-label="System notifications (1 critical alert)" title="Notifications">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            <span class="notification-indicator" aria-hidden="true"></span>
-          </button>
+        <!-- Refresh Data Trigger -->
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-data" aria-label="Refresh telemetry data">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          <span>Sync</span>
+        </button>
+      </div>
+    </header>
 
-          <!-- Refresh Data Trigger -->
-          <button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-data" aria-label="Refresh telemetry data">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            <span>Sync</span>
-          </button>
+    <!-- MAIN BODY (SIDEBAR + CONTENT) -->
+    <div class="dashboard-main-wrapper">
+
+      <!-- 1. LEFT SIDEBAR NAVIGATION -->
+      <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Main Navigation">
+        <div class="sidebar-header">
+          <span class="sidebar-header-label">CONSOLE NAVIGATION</span>
+          <button type="button" class="btn-sidebar-close" id="btn-sidebar-close" aria-label="Close navigation drawer">&times;</button>
         </div>
-      </header>
+
+        <nav class="sidebar-nav">
+          <div class="nav-group-title">OPERATIONS</div>
+          <ul class="nav-list">
+            <li>
+              <a href="#main-dashboard" class="nav-item is-active" aria-current="page">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span>Overview</span>
+              </a>
+            </li>
+            <li>
+              <a href="#chart-section" class="nav-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>Telemetry Trends</span>
+              </a>
+            </li>
+            <li>
+              <a href="#table-section" class="nav-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                <span>Services Grid</span>
+                <span class="nav-counter-badge" id="nav-active-count">24</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ASHISH-7142023/Yuva-Week5-Dashboard-App" target="_blank" rel="noopener noreferrer" class="nav-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub Repo</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="nav-group-title">ORGANIZATION</div>
+          <div class="sidebar-org-card">
+            <div class="org-avatar">AP</div>
+            <div class="org-info">
+              <span class="org-name">Ashish Ranjan Singh</span>
+              <span class="org-role">Yuva Intern &bull; Week 5</span>
+            </div>
+          </div>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="system-status-pill">
+            <span class="status-pulse-dot" aria-hidden="true"></span>
+            <span>Cluster: 99.98% Uptime</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- SIDEBAR BACKDROP FOR MOBILE -->
+      <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+      <!-- 2. MAIN CONTENT AREA -->
+      <div class="dashboard-body">
 
       <!-- PRIMARY DASHBOARD VIEW -->
       <main class="dashboard-content" id="main-dashboard">
@@ -482,6 +505,7 @@
       </footer>
     </div>
   </div>
+</div>
 
   <!-- =====================================================================
        4. ACCESSIBLE MODAL INSPECTION DIALOG (WCAG AA FOCUS TRAP)
